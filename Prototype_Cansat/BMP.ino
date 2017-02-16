@@ -1,4 +1,4 @@
-  void setupBMP() 
+  void bmpBegin() 
   {
   //Setup for BMP Sensor
     float T, P, A, P0;
