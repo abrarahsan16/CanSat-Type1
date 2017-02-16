@@ -40,11 +40,11 @@ void setup() {
 void loop() 
 {
   // put your main code here, to run repeatedly:
-  callPressure;
-  callTemp;
-  callAlt;
-  getHeading;
-  printXB;
+  callPressure();
+  callTemp();
+  callAlt();
+  getHeading();
+  printXB();
   
   telemetry[teleCount]= telemetry[teleCount]+1; //counter
   delay(1000);
