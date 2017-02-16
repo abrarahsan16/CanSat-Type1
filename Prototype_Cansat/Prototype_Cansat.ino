@@ -4,34 +4,47 @@
 #include <SparkFunDS1307RTC.h>
 #include <Adafruit_Sensor.h>
 #include <Adafruit_HMC5883_U.h>
-#include <Adafruit_BMP085.h>
+#include <SFE_BMP180.h> //Changed to Appropriate BMP180 package
 //locations of each reading in the telemetry array
 #define teleTime 0
 #define telePressure 1
 #define teleTemp 2
 #define teleSpeed 3 
 #define teleHeading 4
+#define teleAlt 5
+#define teleCount 6
 //the wire will be burnt from a wire connected to this pin
 #define releasePin 13
 //telemetry array to be transmitted
-float telemetry[5];
+float telemetry[7]; //increased from 5 to 7
 //other variables
 
 //sensors
-Adafruit_BMP085 bmp;
+SFE_BMP180 bmp; //Changed to appropriate BMP180 declaration
 Adafruit_HMC5883_Unified compass = Adafruit_HMC5883_Unified(12345);
 
 
 void setup() {
   Serial.begin(19200);
   bmpBegin();
+  //setupBMP();
   compassBegin();
   RTCBegin();
   
+  int count=0;
+  telemetry[teleCount]= count;
 
 }
 
-void loop() {
+void loop() 
+{
   // put your main code here, to run repeatedly:
-
+  callPressure;
+  callTemp;
+  callAlt;
+  getHeading;
+  getTime;
+  
+  telemetry[teleCount]= telemetry[teleCount]+1;
+  delay(1000);
 }
