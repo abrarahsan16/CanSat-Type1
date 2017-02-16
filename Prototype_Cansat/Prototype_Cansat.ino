@@ -30,7 +30,8 @@ void setup() {
   //setupBMP();
   compassBegin();
   RTCBegin();
-  
+  radioBegin();
+ 
   int count=0;
   telemetry[teleCount]= count;
 
@@ -43,8 +44,8 @@ void loop()
   callTemp;
   callAlt;
   getHeading;
-  getTime;
+  printXB;
   
-  telemetry[teleCount]= telemetry[teleCount]+1;
+  telemetry[teleCount]= telemetry[teleCount]+1; //counter
   delay(1000);
 }
