@@ -20,8 +20,9 @@ void getHeading() {
   if(heading>2*PI) heading -= 2*PI;
 
   float degree = heading*(180/PI);
-  Serial.print("Heading: ");
+  telemetry[teleHeading] = degree;
+  /*Serial.print("Heading: ");
   Serial.print(degree,2);
-  Serial.println("degrees from magnetic N");
+  Serial.println("degrees from magnetic N");*/
 }
 
