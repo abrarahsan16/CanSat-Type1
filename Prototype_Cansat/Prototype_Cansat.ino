@@ -32,8 +32,7 @@ void setup() {
   RTCBegin();
   radioBegin();
  
-  int count=0;
-  telemetry[teleCount]= count;
+  telemetry[teleCount]= 0;
 
 }
 
@@ -44,6 +43,7 @@ void loop()
   callTemp();
   callAlt();
   getHeading();
+  getTime();
   printXB();
   
   telemetry[teleCount]= telemetry[teleCount]+1; //counter
