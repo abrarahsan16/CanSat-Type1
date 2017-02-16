@@ -1,40 +1,42 @@
-#include <SFE_BMP180.h>
-#include <Wire.h>
-
-SFE_BMP180 bmp;
-double T, P;
-
-  void setup
-  () {
+  void setupBMP() 
+  {
   //Setup for BMP Sensor
-  Serial.begin(9600);
-  bmp.begin();
+    float T, P, A, P0;
+    bmp.begin();
 
   if (bmp.begin())
   {
-    Serial.println("I Work");
+    Serial.println("BMP Detected"); 
   }
   else
   {
-    Serial.println("Nope, bye.");
+    Serial.println("Error, BMP Not Detected");
   }
 }
 
 
-void loop() {
-  // put your main code here, to run repeatedly:
-  {
-    bmp.getTemperature(T);
-    Serial.print("Temperature: ");
+//void loop() {
+ void callTemp()
+ {
+    telemetry[teleTemp] = bmp.getTemperature(T);
+    /*Serial.print("Temperature: ");
     Serial.print(T,2);
-    Serial.print(" deg C");
+    Serial.print(" deg C");*/
   }
-  {
-    bmp.getPressure(P, T);
-    Serial.print("Pressure: ");
+ void callPressure()
+ {
+    telemetry[telePressure] = bmp.getPressure(P, T);
+    /*Serial.print("Pressure: ");
     Serial.print(P, 2);
-    Serial.print("mb");
+    Serial.print("mb");*/
     
   }
-  
-}
+ void callAlt()
+  {
+    telemetry[teleAlt] = bmp.altitude(P, P0);
+    /*Serial.print("Altitude: ");
+    Serial.print(A, 2);
+    Serial.print("m");
+    Serial.println();*/
+  }
+//}
