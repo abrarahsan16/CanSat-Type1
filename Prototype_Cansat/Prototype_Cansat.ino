@@ -9,7 +9,7 @@
 #define teleTime 0
 #define telePressure 1
 #define teleTemp 2
-#define teleSpeed 3 
+#define teleSpeed 3
 #define teleHeading 4
 #define teleAlt 5
 #define teleCount 6
@@ -17,7 +17,12 @@
 #define releasePin 13
 //telemetry array to be transmitted
 float telemetry[7]; //increased from 5 to 7
+
 //other variables
+double P0=1013.25; //Baseline Pressure for final altitude reading
+double T, P, A;
+char status;
+
 
 //sensors
 SFE_BMP180 bmp; //Changed to appropriate BMP180 declaration
@@ -31,12 +36,18 @@ void setup() {
   compassBegin();
   RTCBegin();
   radioBegin();
+<<<<<<< HEAD
+
+  int count = 0;
+  telemetry[teleCount] = count;
+=======
  
   telemetry[teleCount]= 0;
+>>>>>>> origin/master
 
 }
 
-void loop() 
+void loop()
 {
   // put your main code here, to run repeatedly:
   callPressure();
@@ -45,7 +56,7 @@ void loop()
   getHeading();
   getTime();
   printXB();
-  
-  telemetry[teleCount]= telemetry[teleCount]+1; //counter
+
+  telemetry[teleCount] = telemetry[teleCount] + 1; //counter
   delay(1000);
 }
