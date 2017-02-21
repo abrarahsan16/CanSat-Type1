@@ -1,4 +1,3 @@
-
 void compassBegin() {
   if(compass.begin()){
     Serial.println("Magnometer Setup");

@@ -1,4 +1,3 @@
-
 void bmpBegin()
 {
   //Setup for BMP180
@@ -54,7 +53,7 @@ void callPressure()
 }
 void callAlt()
 {
-  A=bmp.altitude(P, P0);
+  A = bmp.altitude(P, P0);
   telemetry[teleAlt] = (float)A;
   /*Serial.print("Altitude: ");
     Serial.print(A, 2);

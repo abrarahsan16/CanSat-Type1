@@ -3,10 +3,8 @@ void radioBegin()
   Serial.begin(19200);
   Serial.println("Hi, I work for once");
 }
-
 void printXB()
 {
-
   Serial.print("Mission Time: ");
   Serial.print(telemetry[teleTime]);
   Serial.println("s");
