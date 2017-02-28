@@ -21,7 +21,7 @@
 float telemetry[7]; //increased from 5 to 7
 
 //other variables
-double P0 = 1013.25; //Baseline Pressure for final altitude reading
+double P0; //Baseline Pressure for final altitude reading
 double T, P, A;
 char status;
 
@@ -42,7 +42,7 @@ void setup() {
   int count = 0;
   telemetry[teleCount] = count;
 
-    telemetry[teleCount] = 0;
+  telemetry[teleCount] = 0;
 
 }
 
@@ -56,6 +56,12 @@ void loop()
   getTime();
   printXB();
 
+  if(telemetry[teleCount]==0)
+  {
+    callBasePressure();
+  }
+  
+  
   telemetry[teleCount] = telemetry[teleCount] + 1; //counter
   delay(1000);
 }
