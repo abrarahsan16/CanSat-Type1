@@ -33,6 +33,19 @@ void callTemp()
     }
   }
 }
+void callBasePressure()
+{
+  status = bmp.startPressure(3);
+  if (status != 0)
+  {
+    delay(status);
+    status = bmp.getPressure(P, T);
+    if (status != 0)
+    {
+      P0 = (float)P;
+    }
+  
+  }}
 void callPressure()
 {
   status = bmp.startPressure(3);
